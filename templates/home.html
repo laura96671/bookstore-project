@@ -4,4 +4,19 @@
 
 {% block content %}
 <h1>My Bookstore</h1>
+{% if user.is_authenticated %}
+    Welcome back, {{ user.username }}!
+    <p><button class="btn btn-primary" type="submit">
+        <a href="{% url 'logout' %}">Logout</a>
+    </button></p>
+{% else %}
+    <p>You are not logged in</p>
+    <button class="btn btn-primary" type="submit">
+    <a href="{% url 'login' %}">Log in</a>
+    </button>
+    <button class="btn btn-primary" type="submit">
+        <a href="{% url 'signup' %}">Sign up</a>
+    </button>
+
+{% endif %}
 {% endblock content %}
