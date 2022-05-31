@@ -8,11 +8,11 @@
 <img class="bookcover" src="{% static 'images/memoirs_of_a_geisha.jpg' %}">
 {% if user.is_authenticated %}
     <p>Welcome back, {{ user.username }}!</p>
-    <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+    <a type="button" class="btn btn-danger" href="{% url 'account_logout' %}">Logout</a>
 {% else %}
     <p>You are not logged in</p>
-    <a class="btn btn-primary" href="{% url 'login' %}" role="button">Log in</a>
-    <a class="btn btn-primary" href="{% url 'signup' %}" role="button">Sign up</a>
+    <a class="btn btn-primary" href="{% url 'account_login' %}" role="button">Log in</a>
+    <a class="btn btn-primary" href="{% url 'account_signup' %}" role="button">Sign up</a>
 
 {% endif %}
 {% endblock content %}
