@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <p>Welcome back, {{ user.username }}!</p>
+{% endif %}
+<h2>June Best Sellers</h2>
+<img class="bookcover" src="{% static 'images/memoirs_of_a_geisha.jpg' %}">
+{% endblock content %}

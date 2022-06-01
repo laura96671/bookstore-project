@@ -25,5 +25,6 @@ urlpatterns = [
 
     # My Apps
     path('', include('pages.urls')),
+    path('', include('products.urls')),
 
 ]

@@ -4,15 +4,10 @@
 {% block title %}Bookstore Home{% endblock title %}
 
 {% block content %}
-<h1>Bookstore</h1>
-<img class="bookcover" src="{% static 'images/memoirs_of_a_geisha.jpg' %}">
 {% if user.is_authenticated %}
     <p>Welcome back, {{ user.username }}!</p>
-    <a type="button" class="btn btn-danger" href="{% url 'account_logout' %}">Logout</a>
-{% else %}
-    <p>You are not logged in</p>
-    <a class="btn btn-primary" href="{% url 'account_login' %}" role="button">Log in</a>
-    <a class="btn btn-primary" href="{% url 'account_signup' %}" role="button">Sign up</a>
-
 {% endif %}
+<div class="container text-center">
+      <a class="btn btn-warning btn-lg" href="{% url 'products' %}" role="button">Visit Shop</a>
+</div>
 {% endblock content %}
