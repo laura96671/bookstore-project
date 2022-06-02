@@ -10,8 +10,8 @@
     <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
         {{ form|crispy }}
-        <a type="button" class="btn btn-primary" href="{% url 'home' %}">Homepage</a>
-        <button class="btn btn-danger" type="submit">Log Out</button>
+        <a type="button" class="btn btn-dark" href="{% url 'home' %}">Homepage</a>
+        <button class="btn btn-dark" type="submit">Log Out</button>
     </form>
 </div>
 {% endblock content %}

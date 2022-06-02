@@ -70,7 +70,14 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'postmaster@sandbox7770466a202f4b4da56cd02ebd768362.mailgun.org'
+EMAIL_HOST_PASSWORD = '4aede94f01453418ef122833b3221b1c-27a562f9-40776e9f'
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
@@ -181,3 +188,6 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Default e-mail sender
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'

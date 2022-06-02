@@ -6,7 +6,7 @@
 {% block title %}Log in{% endblock title %}
 
 {% block content %}
-<h2>Log in</h2>
+<h1>Log in</h1>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -44,10 +44,14 @@
 <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
-    <p><button class="btn btn-primary" type="submit">Sign in</button></p>
-    <p><fb:login-button
+    <button class="btn btn-dark" type="submit">Sign in</button>
+    <fb:login-button
     scope="public_profile,email"
     onlogin="checkLoginState();">
-    </fb:login-button></p>
+    </fb:login-button>
 </form>
+
+<a class="p-2 text-dark forgotten_password" href="{% url 'account_reset_password' %}">
+    <p>Forgotten password</p></a>
+
 {% endblock content %}
