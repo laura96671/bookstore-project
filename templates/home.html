@@ -4,10 +4,15 @@
 {% block title %}Bookstore Home{% endblock title %}
 
 {% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  </ol>
+</nav>
 {% if user.is_authenticated %}
     <p>Welcome back, {{ user.username }}!</p>
 {% endif %}
 <div class="container text-center">
-      <a class="btn btn-warning btn-lg" href="{% url 'products' %}" role="button">Visit Shop</a>
+      <a class="btn btn-warning btn-lg" href="{% url 'product_list' %}" role="button">Visit Shop</a>
 </div>
 {% endblock content %}

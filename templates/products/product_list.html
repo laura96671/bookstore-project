@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Products{% endblock title %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Books</li>
+  </ol>
+</nav>
+<p><h1>June Best Sellers</h1></p>
+<h3>Month's Bestsellers - our most popular books updated monthly</h3>
+<hr/>
+{% for product in product_list %}
+    <div class="product-list">
+        <img class="book_main_image" src="{{ product.book_image }}">
+        <h2><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h2>
+        Author: {{ product.author }}
+    </div>
+{% endfor %}
+{% endblock content %}

@@ -4,6 +4,12 @@
 {% block title %}About{% endblock title %}
 
 {% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">About us</li>
+  </ol>
+</nav>
     <h1>About</h1>
         <h3>Curious about our story?</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
