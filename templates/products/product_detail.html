@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block title %}{{ product.title }}{% endblock title %}
-
 {% block content %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -16,4 +15,21 @@
     <p>Author: {{ object.author }}</p>
     <p>Price: ${{ object.price }}</p>
 </div>
+<br>
+<table class="table table-light reviews-list">
+    <thead>
+        <tr>
+            <th><h4>Author</h4></th>
+            <th><h4>Review</h4></th>
+        </tr>
+    </thead>
+    {% for review in product.reviews.all %}
+    <tbody>
+      <tr>
+          <td>{{ review.author }}</td>
+          <td>{{ review.review }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+</table>
 {% endblock content %}

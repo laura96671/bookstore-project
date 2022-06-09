@@ -1,15 +1,24 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse
 
-from .models import Product
+from .models import Product, Review
 
 
 class ProductTest(TestCase):
 
     def setUp(self):
+        self.user = get_user_model().objects.create_user(username="reviewuser",
+                                                         email="reviewuser@email.com",
+                                                         password="testpass123",)
+
         self.product = Product.objects.create(title="Harry Potter",
                                               author="JK Rowling",
                                               price="25.00",)
+
+        self.review = Review.objects.create(product=self.product,
+                                            author=self.user,
+                                            review="Amazing book!",)
 
     def test_product_listing(self):
         self.assertEqual(f'{self.product.title}', "Harry Potter")
@@ -29,6 +38,7 @@ class ProductTest(TestCase):
         self.assertEqual(no_response.status_code, 404)
         self.assertTemplateUsed(response, "products/product_detail.html")
         self.assertContains(response, "Harry Potter")
+        self.assertContains(response, "Amazing book!")
 
     def test_new_product_creation_view(self):
         response = self.client.get(reverse("new_product_form"))
