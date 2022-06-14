@@ -10,14 +10,30 @@
     <li class="breadcrumb-item active" aria-current="page">Books</li>
   </ol>
 </nav>
-<p><h1>June Best Sellers</h1></p>
+<p><h1>Book List</h1>
 <h3>Month's Bestsellers - our most popular books updated monthly</h3>
-<hr/>
+<hr>
 {% for product in product_list %}
-    <div class="product-list">
-        <img class="book_main_image" src="{{ product.book_image }}">
-        <h2><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h2>
-        Author: {{ product.author }}
-    </div>
+    {% if forloop.first %}
+        <div class="row flex-md-row align-items-center-top p-3 px-md-4 mb-3">{% endif %}
+            <div class="col-3 col-3 col-3 col-3">
+                <div class="product-list card" style="box-shadow: 5px 10px 8px #888888;">
+                    {% if product.book_image %}
+                        <img class="book-main-image card-img-top" src="{{ product.book_image.url }}" alt="view more">
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="card-title">{{ product.title }}</h6>
+                        <p class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ product.author }}</p>
+                        <h6 class="p-2 text-dark" style="margin-top:-23px; margin-left:-7px">$ {{ product.price }}</h6>
+                        <a class="btn btn-warning btn-sm" type="button" style="margin-top:-18px;" href="{{ product.get_absolute_url }}">View</a>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class=row>{% endif %}
+                {% if forloop.last %}
+            </div>{% endif %}
+            <br>
+        </div>
 {% endfor %}
 {% endblock content %}

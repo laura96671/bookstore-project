@@ -11,25 +11,36 @@
   </ol>
 </nav>
 <div class="product-detail">
-    <h2><a href="">{{ object.title }}</a></h2>
-    <p>Author: {{ object.author }}</p>
-    <p>Price: ${{ object.price }}</p>
+    <a href="{% url 'edit_product' product.id %}" style="float:right">Edit</a>
+    <br>
+    <a href="{% url 'delete_product' product.id %}" style="float:right">Delete</a>
+    <br>
+    {% if product.book_image %}
+        <img class="bookcover" src="{{ product.book_image.url }}" alt="{{ product.title }}" >
+    {% endif %}
+    <h2><a href="">{{ product.title }}</a></h2>
+    <p>Author: {{ product.author }}</p>
+    <p>Price: ${{ product.price }}</p>
 </div>
 <br>
-<table class="table table-light reviews-list">
-    <thead>
-        <tr>
-            <th><h4>Author</h4></th>
-            <th><h4>Review</h4></th>
-        </tr>
-    </thead>
-    {% for review in product.reviews.all %}
-    <tbody>
-      <tr>
-          <td>{{ review.author }}</td>
-          <td>{{ review.review }}</td>
-      </tr>
-    </tbody>
-    {% endfor %}
-</table>
+{% if product.reviews.all %}
+    <table class="table table-light reviews-list">
+        <thead>
+            <tr>
+                <th><h4>Author</h4></th>
+                <th><h4>Review</h4></th>
+            </tr>
+        </thead>
+        {% for review in product.reviews.all %}
+        <tbody>
+          <tr>
+              <td>{{ review.author }}</td>
+              <td>{{ review.review }}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>Oops... there are no reviews for this book yet!</p>
+{% endif %}
 {% endblock content %}

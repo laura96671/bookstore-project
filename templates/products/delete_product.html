@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Delete{% endblock title %}
+
+{% block content %}
+<p>Are you sure you want to delete "{{product}}"?</p>
+<form action="{% url 'delete_product' product.id %}" method="POST">
+    <a href="{{ product.get_absolute_url }}">Cancel</a>
+
+    {% csrf_token %}
+    <input type="submit" value="Confirm">
+</form>
+{% endblock content %}

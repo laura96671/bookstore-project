@@ -4,5 +4,15 @@ h1 {
 
 .bookcover {
     height: 300px;
-    width: auto;
+    width: 200px;
+}
+
+.book-main-image {
+    height: 300px;
+    width: 200px;
+    }
+
+.product-list {
+    height: 440px;
+    width: 200px;
 }
