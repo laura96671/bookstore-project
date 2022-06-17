@@ -10,12 +10,13 @@
     <li class="breadcrumb-item active" aria-current="page">Books</li>
   </ol>
 </nav>
+<p style="text-align:center">20% off at the checkout with the code "Code9274"!</p>
+<hr>
 <p><h1>Book List</h1>
 <h3>Month's Bestsellers - our most popular books updated monthly</h3>
-<hr>
 {% for product in product_list %}
     {% if forloop.first %}
-        <div class="row flex-md-row align-items-center-top p-3 px-md-4 mb-3">{% endif %}
+        <div class="row flex-md-row align-items-center-top mt-5 mb-3">{% endif %}
             <div class="col-3 col-3 col-3 col-3">
                 <div class="product-list card" style="box-shadow: 5px 10px 8px #888888;">
                     {% if product.book_image %}
@@ -26,6 +27,7 @@
                         <p class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ product.author }}</p>
                         <h6 class="p-2 text-dark" style="margin-top:-23px; margin-left:-7px">$ {{ product.price }}</h6>
                         <a class="btn btn-warning btn-sm" type="button" style="margin-top:-18px;" href="{{ product.get_absolute_url }}">View</a>
+                        <a class="btn btn-dark btn-sm" type="button" style="margin-top:-18px;" href="{% url 'orders' product.id %}">Buy now</a>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}

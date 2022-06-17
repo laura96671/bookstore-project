@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Orders{% endblock title %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'product_list' %}">Books</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+  </ol>
+</nav>
+<h1>Orders page</h1>
+
+<div class="product-detail">
+  <p>Buy for {{ product.price }}</p>
+</div>
+
+<form action="{% url 'charge' %}" method="post">
+  {% csrf_token %}
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                        data-key="{{ stripe_key }}"
+                                                        data-description="All books"
+                                                        data-amount="3900"
+                                                        data-locale="auto">
+  </script>
+</form>
+{% endblock content %}

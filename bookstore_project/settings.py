@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'products.apps.ProductsConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 # django-allauth config
@@ -195,3 +196,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default e-mail sender
 DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+
+# Stripe
+STRIPE_TEST_PUBLISHABLE_KEY = os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')

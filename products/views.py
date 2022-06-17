@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .models import Product
 from django.http import HttpResponseRedirect
 from .forms import NewProductForm
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import permission_required
 
 
 class ProductListView(LoginRequiredMixin, ListView):
@@ -58,5 +58,5 @@ def delete_product(request, pk):
         item.delete()
         return HttpResponseRedirect('/products')
 
-    context = {"product":item}
+    context = {"product": item}
     return render(request, "products/delete_product.html", context)
