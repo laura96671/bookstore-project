@@ -28,6 +28,11 @@ urlpatterns = [
 
     # My Apps
     path('', include('pages.urls')),
+    path('personal_area', include('userarea.urls')),
     path('products/', include('products.urls')),
-    path('orders/', include('orders.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('cart/', include('orders.urls')),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

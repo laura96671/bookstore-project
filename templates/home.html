@@ -12,7 +12,66 @@
 {% if user.is_authenticated %}
     <p>Welcome back, {{ user.username }}!</p>
 {% endif %}
+
+
+<div id="checkbox-filter">
+    <video id="book-animation-search" autoplay muted loop>
+        <source src="{% static 'videos/book_animation.mp4' type='video/mp4' %}">
+    </video>
+    <h2>Select genre</h2>
+    <form id="filter-form" method="POST">
+        {% csrf_token %}
+        <section class="filter1" id="genre-check">
+            {% for genre in book_genres %}
+                    <p><input type="checkbox" name="genre_check" value="{{ genre }}">  {{ genre }}</p>
+            {% endfor %}
+        </section>
+        <section class="filter2" id="mood-check">
+            ====
+            {% for mood in book_moods %}
+                    <p><input type="radio" name="mood_check" value="{{ mood }}">  {{ mood }}</p>
+            {% endfor %}
+            ====
+        </section>
+        <section class="filter3" id="age-check">
+            {% for age in book_ages %}
+                    <p><input type="radio" name="age_check" value="{{ age }}">  {{ age }}</p>
+            {% endfor %}
+        </section>
+        <button type="button" id="submit-button" value="Submit">Submit</button>
+        <!-- <input id="submit-button" type="submit" value="Submit"> -->
+    </form>
+    <button id="next-filter-button" value="Next">Next</button>
+    <button id="back-filter-button" value="Previous" disabled>Previous</button>
+</div>
+
 <div class="container text-center">
       <a class="btn btn-warning btn-lg" href="{% url 'product_list' %}" role="button">Visit Shop</a>
 </div>
+{% if book_showed %}
+    <h2>Suggested Books ...</h2>
+    {% for product in book_showed %}
+        <div class="product_list_view" style="display: inline-block; vertical-align:bottom; margin-top:50px">
+            <div class="col-3 col-3 col-3 col-3">
+                <div class="image-list card">
+                    {% if product.book_image %}
+                        <img id="image-to-edit" class="book-main-image card-img-t15'1op" src="{{ product.book_image.url }}" alt="view more">
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="card-title">{{ product.title }}</h6>
+                        <p class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ product.author }}</p>
+                        <h6 class="p-2 text-dark" style="margin-top:-23px; margin-left:-7px">$ {{ product.price }}</h6>
+                        <a class="btn btn-dark btn-sm" type="button" style="margin-top:-18px;" href="{{ product.get_absolute_url }}">View</a>
+                        <a class="btn btn-warning btn-sm" style="margin-top:-18px;" href="{{ product.get_add_to_cart_url }}">Add to Cart</a>
+                        <a class="btn btn-dark btn-sm" href="{{ product.get_add_to_favs_url }}">Add to Wishlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="no_books_retrieved">
+        <p>No books found based on your search</p>
+    </div>
+{% endif %}
 {% endblock content %}

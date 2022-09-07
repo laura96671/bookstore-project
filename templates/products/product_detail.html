@@ -10,37 +10,54 @@
     <li class="breadcrumb-item active" aria-current="page">{{ object.title }}</li>
   </ol>
 </nav>
-<div class="product-detail">
-    <a href="{% url 'edit_product' product.id %}" style="float:right">Edit</a>
-    <br>
-    <a href="{% url 'delete_product' product.id %}" style="float:right">Delete</a>
-    <br>
-    {% if product.book_image %}
-        <img class="bookcover" src="{{ product.book_image.url }}" alt="{{ product.title }}" >
-    {% endif %}
-    <h2><a href="">{{ product.title }}</a></h2>
-    <p>Author: {{ product.author }}</p>
-    <p>Price: ${{ product.price }}</p>
+<div class="row product-changes">
+    <div class="col" style="float:right">
+        <a href="{% url 'delete_product' product.id %}" style="float:right; margin-left:10px">Delete</a>
+        <a href="{% url 'edit_product' product.id %}" style="float:right">Edit</a>
+    </div>
 </div>
 <br>
-{% if product.reviews.all %}
-    <table class="table table-light reviews-list">
-        <thead>
-            <tr>
-                <th><h4>Author</h4></th>
-                <th><h4>Review</h4></th>
-            </tr>
-        </thead>
-        {% for review in product.reviews.all %}
-        <tbody>
-          <tr>
-              <td>{{ review.author }}</td>
-              <td>{{ review.review }}</td>
-          </tr>
-        </tbody>
-        {% endfor %}
-    </table>
-{% else %}
-    <p>Oops... there are no reviews for this book yet!</p>
-{% endif %}
+<div class="row product-details">
+    <div class="col-3">
+        <div id="box">
+            {% if product.book_image %}
+                <img id="yes_mouseover" class="bookcover" src="{{ product.book_image.url }}" alt="{{ product.title }}"
+                     style="box-shadow: 5px 10px 8px #888888;">
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-9">
+        <h2><a href="">{{ product.title }}</a></h2>
+        <p>{{ product.author }} <span style="color:lightgrey; margin-left:5px">(Author)</span></p>
+        <strong style="font-size: 20px">${{ product.price }}</strong>
+        <form>
+            <input type="text" placeholder="Quantity">{{ product.quantity }}
+            <a class="btn btn-warning btn-md" type="button" style="float:right;" href="{{ product.get_absolute_url }}">Buy now</a>
+        </form>
+        <hr>
+        <h3>Description</h3>
+        <p>{{ product.description|linebreaks }}</p>
+        {% if product.reviews.all %}
+        <br>
+        <h4>Reviews</h4>
+            <table class="table table-striped reviews-list mt-3">
+                {% for review in product.reviews.all %}
+                <tbody>
+                  <tr>
+                      <td>{{ review.author }}</td>
+                      <td>{{ review.review }}</td>
+                  </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h4>Reviews</h4>
+            <p>Oops... there are no reviews for this book yet!</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/base.js' %}"></script>
+{% endblock scripts %}

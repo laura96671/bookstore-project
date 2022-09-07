@@ -14,7 +14,7 @@
 <h1>Orders page</h1>
 
 <div class="product-detail">
-  <p>Buy for {{ product.price }}</p>
+  <p>Buy for ${{ product.price }}</p>
 </div>
 
 <form action="{% url 'charge' %}" method="post">
@@ -22,7 +22,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                                         data-key="{{ stripe_key }}"
                                                         data-description="All books"
-                                                        data-amount="3900"
+                                                        data-amount="{{ product.price }}"
                                                         data-locale="auto">
   </script>
 </form>

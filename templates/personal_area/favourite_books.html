@@ -1,0 +1,34 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
+    </ol>
+  </nav>
+
+<h2>What to read next...</h2>
+
+  {% if favourite_item %}
+    {% for item in favourite_item %}
+        <div class="product_list_view" style="display: inline-block; margin-top:50px">
+            <div class="col-3 col-3 col-3 col-3">
+                <div class="image-list card">
+                    {% if item.products.book_image %}
+                        <img id="image-to-edit" class="book-main-image card-img-t15'1op" src="{{ item.products.book_image.url }}" alt="view more">
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="card-title">{{ item.products }}</h6>
+                        <p class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ item.products.author }}</p>
+                        <h6 class="p-2 text-dark" style="margin-top:-23px; margin-left:-7px">$ {{ item.products.price }}</h6>
+                        <a href="{% url 'delete_fav' item.id %}">Delete</a>
+                        <a class="btn btn-dark btn-sm" type="button" style="margin-top:-18px;" href="{{ item.products.get_absolute_url }}">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+  {% endif %}
+{% endblock content %}

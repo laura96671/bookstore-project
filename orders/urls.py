@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import OrdersView, charge
+from . import views
 
 
 urlpatterns = [
-    path('charge', charge, name="charge"),
-    path('/<str:pk>', OrdersView.as_view(), name="orders"),
+    path("<str:pk>", views.add_to_cart_view, name="add_to_cart"),
+    path("", views.cart_view, name="cart")
 ]

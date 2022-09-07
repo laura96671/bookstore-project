@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Delete{% endblock title %}
+
+{% block content %}
+<h3>Remove "{{ userfavs.products }}" from wishlist?</h3>
+<form action="{% url 'delete_fav' userfavs.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes">
+    <input type="submit" onclick="window.location='{% url 'wishlist' %}'; return false", value="Cancel">
+</form>
+{% endblock content %}

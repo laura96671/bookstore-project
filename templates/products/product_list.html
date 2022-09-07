@@ -14,20 +14,23 @@
 <hr>
 <p><h1>Book List</h1>
 <h3>Month's Bestsellers - our most popular books updated monthly</h3>
+{% for genre in book_showed %}
+{{genre}}
+{% endfor %}
 {% for product in product_list %}
     {% if forloop.first %}
         <div class="row flex-md-row align-items-center-top mt-5 mb-3">{% endif %}
             <div class="col-3 col-3 col-3 col-3">
-                <div class="product-list card" style="box-shadow: 5px 10px 8px #888888;">
+                <div class="image-list card" style="box-shadow: 5px 10px 8px #888888;">
                     {% if product.book_image %}
-                        <img class="book-main-image card-img-t15'1op" src="{{ product.book_image.url }}" alt="view more">
+                        <img id="image-to-edit" class="book-main-image card-img-t15'1op" src="{{ product.book_image.url }}" alt="view more">
                     {% endif %}
                     <div class="card-body">
                         <h6 class="card-title">{{ product.title }}</h6>
                         <p class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ product.author }}</p>
                         <h6 class="p-2 text-dark" style="margin-top:-23px; margin-left:-7px">$ {{ product.price }}</h6>
-                        <a class="btn btn-warning btn-sm" type="button" style="margin-top:-18px;" href="{{ product.get_absolute_url }}">View</a>
-                        <a class="btn btn-dark btn-sm" type="button" style="margin-top:-18px;" href="{% url 'orders' product.id %}">Buy now</a>
+                        <a class="btn btn-dark btn-sm" type="button" style="margin-top:-18px;" href="{{ product.get_absolute_url }}">View</a>
+                        <a class="btn btn-warning btn-sm" style="margin-top:-18px;" href="{{ product.get_add_to_cart_url }}">Add to Cart</a>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
@@ -39,3 +42,6 @@
         </div>
 {% endfor %}
 {% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

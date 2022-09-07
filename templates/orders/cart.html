@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+{% load static %}
+
+
+{% block title %}Cart{% endblock title %}
+
+{% block content %}
+<h1>Cart</h1>
+
+{% if order_item %}
+    {% for order in order_item %}
+    <div id="cart-image">
+        {% if product.book_image %}
+            <img style="margin: 3px; width:100px; height:auto" id="image-to-edit" class="book-main-image card-img-t15'1op" src="{{ order.product.book_image.url }}" alt="view more">
+        {% endif %}
+        <a style="display:inline-block" href="{{ order.product.get_absolute_url }}"><h3>{{ order.product }}</h3> Quantity: {{ order.quantity }}</a><br>
+    </div>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock content %}

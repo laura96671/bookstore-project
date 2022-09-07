@@ -14,8 +14,8 @@ services:
     ports:
       - 8000:8000
     depends_on:
-      - db
-  db:
+      - db1
+  db1:
     image: postgres:11
     volumes:
       - postgres_data:/var/lib/postgresql/data/

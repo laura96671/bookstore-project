@@ -36,7 +36,7 @@ class ProductTest(TestCase):
         self.client.login(email="superuser@email.com", password="testpass123")
         response = self.client.get(reverse("new_product_form"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "products/new_product_form.html")
+        self.assertTemplateUsed(response, "products/product_form.html")
         self.assertContains(response, "New Product")
 
     def test_product_list_view_for_logged_in_user(self):

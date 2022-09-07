@@ -1,28 +1,19 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Bookstore{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <style>
-    .card-footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: #f5f5f5;
-      color: white;
-      text-align: center;
-    }
 
-    .page-content {
-      padding-bottom: 120px;
-      position: relative;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="{% static 'js/home.js' %}" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous" defer></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body>
     <header>
@@ -45,7 +36,9 @@
                        <a class="p-2 text-dark" href="{% url 'product_list' %}">Shop</a>
                     {% endif %}
                     {% if user.is_authenticated %}
-                        `<a class="btn btn-outline-dark btn-sm" href="{% url 'account_logout' %}" role="button">Log out</a>
+                        <!--<a href="{% url 'cart' %}">Cart</a> -->
+                        <a id="wishlist-button" href="{% url 'wishlist' %}">My Wishlist</a>
+                        <a class="btn btn-outline-dark btn-sm" href="{% url 'account_logout' %}" role="button">Log out</a>
                     {% else %}
                         <a class="btn btn-outline-dark btn-sm" href="{% url 'account_login' %}" role="button">Log In</a>
                         <a class="btn btn-outline-dark btn-sm" href="{% url 'account_signup' %}" role="button">Sign Up</a>
@@ -55,15 +48,14 @@
         </div>
     </header>
     <div class="container page-content">
+
         {% block content %}
         {% endblock content %}
     </div>
     <!-- JavaScript -->
+        {% block scripts %}
+        {% endblock scripts %}
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8\ abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/\ umd/popper.min.js" integrity="sha384UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1\ clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=5061613290619243&autoLogAppEvents=1" nonce="wlkSVMbY"></script>
     <div class="card-footer text-muted" id="sticky-footer">
         <div class="container">
             <h6>Bookstore</h6>
