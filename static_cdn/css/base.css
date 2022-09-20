@@ -1,22 +1,52 @@
-h1 {
-    color: orange;
+body {
+    background: url('../background/background_image.png');
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
 }
 
-
-h2 {
-    color: #FFC107;
+.app-body-homepage {
+    margin:50px;
+    margin-top: 0px;
+    padding: 50px;
 }
 
-.card-footer {
-      position: relative;
-      height: 100%;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: #f5f5f5;
-      color: white;
-      text-align: center;
-    }
+.card-body a {
+    style= margin-top:-10px;
+}
+
+#footer-container {
+    position:relative;
+}
+
+#sticky-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #EBEFF4;
+  text-align: center;
+  height: 110px;
+}
+
+/* Book List Section */
+    #filter-book-results h2 {
+    margin-left: 5px;
+    margin-top: 50px;
+    font-weight: 300;
+    color: #000505;
+    font-size: 20px;
+    height: auto !important; height: 100%;
+}
+
+#product_list_view {
+    display: inline-flex;
+    vertical-align:bottom;
+    margin-top:30px;
+    margin-right: 24px
+}
+
+#book-title { color: #000505 }
+#book-subtitle { color: #5D5D81 }
 
 .bookcover {
     height: 300px;
@@ -36,10 +66,13 @@ h2 {
 .image-list {
     height: 440px;
     width: 200px;
+    box-shadow: 5px 10px 8px #888888;
 }
 
 #wishlist-button {
-    margin-right: 30px;
+    float: right;
+    font-size: 20px;
+    color: black;
 }
 
 .page-content {
@@ -52,10 +85,74 @@ h2 {
     display: none;
 }
 
-#mood-check {
-    display: none;
-}
+#mood-check { display: none; }
 
 #submit-button {
     display: none;
+    text-align: center;
+    width: 100%;
+    background-color: #3B3355;
+    color: white;
+}
+
+#back-filter-button { float: right; background-color: #5D5D81; }
+#next-filter-button { background-color: #5D5D81 }
+
+#book-animation-search {
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#video-container {
+    display: flex;
+    justify-content: center;
+}
+
+#filter-quiz {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 30px;
+    padding: 30px;
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+
+#filter-form h2 {
+    margin-bottom: -20px;
+    color: #5C5E81;
+    font-weight: 300;
+}
+
+#filter-form p{
+    padding: 8px;
+    background-color: rgba(235, 239, 244, 1);
+    height: 40px;
+    border-radius: 5px;
+}
+
+/* Navbar Section */
+
+#store-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: -70px;
+    margin-top: -70px;
+}
+
+#app-logo {
+    width: 70%;
+}
+
+#menu-list {
+    display: table-row;
+    list-style-type: none;
+    transform: translateY(30%);
+}
+
+#menu-list li {
+    display: table-cell;
+    vertical-align: middle;
 }

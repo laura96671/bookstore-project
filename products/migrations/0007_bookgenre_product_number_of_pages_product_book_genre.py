@@ -27,6 +27,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='book_genre',
-            field=models.ForeignKey(default=products.models.get_default_book_genre, on_delete=django.db.models.deletion.DO_NOTHING, to='products.bookgenre'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='products.bookgenre'),
         ),
     ]

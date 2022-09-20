@@ -1,5 +1,6 @@
 let counter = 0;
 
+
 const test = $("form section")
 
 function nextButton(){
@@ -28,16 +29,38 @@ function previousButton(){
     });
 }
 
-$("#submit-button").click(function(){
-  $("#filter-form").hide();
-  $("#book-animation-search").show();
-  setTimeout(function(){
+function submitForm(){
+    $("form").validate();
+    $("#filter-form").hide();
+    $("#next-filter-button").hide();
+    $("#back-filter-button").hide();
+    $("#submit-button").hide();
+    $("#book-animation-search").show();
+    setTimeout(function(){
       $("#filter-form").submit();
-  } ,3000)
-})
+    } ,3000)
+}
 
+function testing(){
+    $("#filling-required").show()
+}
 
+function viewMore(idx, displayAll){
+  const paragId = `#description-text_${idx}`
+  const paragIdAll = `#description-all_${idx}`
 
+  let displayVal = "block";
+  let displayValAll = "none";
+
+  if(displayAll){
+    displayVal = "none";
+    displayValAll = "block";
+  }
+
+  $(paragId).css("display", displayVal)
+  $(paragIdAll).css("display", displayValAll)
+
+}
 
 nextButton()
 previousButton()

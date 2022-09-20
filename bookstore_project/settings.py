@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     # Social providers
-    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
 
     # My Apps
     'users.apps.UsersConfig',
@@ -57,13 +58,16 @@ INSTALLED_APPS = [
     'userarea.apps.UserareaConfig',
 ]
 
+
 # django-allauth config
 LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGOUT_REDIRECT = 'home'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_UNIQUE_EMAIL = True
+SOCIALACCOUNT_LOGIN_ON_GET=True
 
 SITE_ID = 1
 
@@ -81,19 +85,8 @@ EMAIL_HOST_USER = 'postmaster@sandbox7770466a202f4b4da56cd02ebd768362.mailgun.or
 EMAIL_HOST_PASSWORD = '4aede94f01453418ef122833b3221b1c-27a562f9-40776e9f'
 
 
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'METHOD': 'oauth2',
-        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-        'SCOPE': ['email', 'public_profile'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'INIT_PARAMS': {'cookie': True},
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v13.0',
-    }
-}
+# social media login configuration
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
 
 MIDDLEWARE = [
@@ -120,6 +113,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'custom_templatetag': 'userarea.templatetags.text_trim',
+            }
         },
     },
 ]

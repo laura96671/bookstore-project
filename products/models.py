@@ -25,9 +25,11 @@ class BookGenre(models.Model):
         return self.book_genre
 
 
+'''
 def get_default_book_genre():
     genre, created = BookGenre.objects.get_or_create(book_genre="unknown")
     return genre.pk
+'''
 
 
 class Product(models.Model):
@@ -38,10 +40,10 @@ class Product(models.Model):
     author = models.CharField(max_length=20)
     description = models.TextField(blank=True)
     number_of_pages = models.IntegerField(default=0, blank=True)
-    book_genre = models.ForeignKey(BookGenre, default=get_default_book_genre, on_delete=models.DO_NOTHING)
+    book_genre = models.ForeignKey(BookGenre, on_delete=models.DO_NOTHING)
     book_age = models.ForeignKey(BookAge, on_delete=models.DO_NOTHING, blank=True, null=True)
     book_mood = models.ForeignKey(BookMood, on_delete=models.DO_NOTHING, blank=True, null=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
     book_image = models.ImageField(upload_to="covers/", blank=True)
 
     class Meta:

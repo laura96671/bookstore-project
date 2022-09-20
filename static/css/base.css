@@ -1,22 +1,63 @@
-h1 {
-    color: orange;
+body {
+    background: url('../background/background_image.png');
+    font-family: 'Roboto', sans-serif;
 }
 
-
-h2 {
-    color: #FFC107;
+#page-app {
+    margin:auto;
+    margin-top: 0px;
+    padding: 30px;
 }
 
-.card-footer {
-      position: relative;
-      height: 100%;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: #f5f5f5;
-      color: white;
-      text-align: center;
-    }
+#favourite-books-section {
+    margin:50px;
+    margin-top: 0px;
+    padding: 50px;
+}
+
+.app-body-homepage {
+    margin:50px;
+    margin-top: 0px;
+    padding: 50px;
+}
+
+.card-body a {
+    style= margin-top:-10px;
+}
+
+#footer-container {
+}
+
+#sticky-footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #EBEFF4;
+  text-align: center;
+  height: 100px;
+}
+
+/* Book List Section */
+
+#filter-book-results h2 {
+    margin-left: 5px;
+    margin-top: 50px;
+    font-weight: 300;
+    color: #000505;
+    font-size: 20px;
+    height: auto !important; height: 100%;
+}
+
+#product_list_view {
+    margin-right: 15px;
+    display: inline-flex;
+    vertical-align:bottom;
+    margin-top:30px;
+}
+
+#book-title { color: #000505 }
+#book-subtitle { color: #5D5D81 }
 
 .bookcover {
     height: 300px;
@@ -40,7 +81,9 @@ h2 {
 }
 
 #wishlist-button {
-    margin-right: 30px;
+    float: right;
+    font-size: 20px;
+    color: black;
 }
 
 .page-content {
@@ -48,17 +91,145 @@ h2 {
       position: relative;
     }
 
-/* Home Page Filters Section */
-#age-check {
-    display: none;
+#buy-button {
+    display: flex;
+    position:relative;
+    float: left;
+    width: 45px;
+    margin-top:auto;
+    bottom: 0;
+    box-sizing: border-box;
+    text-align:center;
+
 }
 
+/* Home Page Filters Section */
+#age-check { display: none; }
 #mood-check { display: none; }
 
-#submit-button { display: none; }
+#submit-button {
+    display: none;
+    text-align: center;
+    width: 100%;
+    background-color: #3B3355;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+#back-filter-button { float: right; background-color: #5D5D81; }
+#next-filter-button { background-color: #5D5D81 }
 
 #book-animation-search {
+    width: 50%;
     display: none;
     margin-left: auto;
     margin-right: auto;
+}
+
+#video-container {
+    display: flex;
+    justify-content: center;
+}
+
+#filter-quiz {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 30px;
+    padding: 30px;
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+
+#required {
+    color:red;
+    margin-top: -15px;
+}
+
+#filter-form h2 {
+    margin-bottom: -20px;
+    margin-top: 10px;
+    color: #5C5E81;
+    font-weight: 300;
+}
+
+#filter-form p{
+    padding: 8px;
+    background-color: rgba(235, 239, 244, 1);
+    height: 40px;
+    border-radius: 5px;
+}
+
+#filling-required{
+    display: none;
+    color: red;
+}
+
+
+
+/* Navbar Section */
+
+#store-navbar {
+    display: flex;
+    margin: auto;
+    margin-bottom: -80px;
+    margin-top: -80px;
+}
+
+#app-logo {
+    width: 70%;
+}
+
+#menu-list {
+    display: table-row;
+    list-style-type: none;
+    transform: translateY(30%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#menu-list li {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Favourite Books Area */
+.product_list_view {
+    margin-top:50px;
+}
+
+#favs-card {
+    position: flex;
+    float: right;
+}
+
+#favs-card a { margin-bottom: -10px}
+
+#remove-favs-heart {
+    margin-left: 15px;
+    font-size: 20px;
+    color: #000505;
+}
+
+#ellipsis-container {
+    margin-top:22px;
+    margin-left: -7px;
+}
+
+#ellipsis-container p {
+    margin-left:-7px;
+    margin-top:-20px;
+    font-size:15px
+}
+
+#desc-title{ margin-bottom: 15px }
+#view-more-button { background-color: #000505; }
+
+#what-to-read-next {
+    margin-left: 5px;
+    margin-top: 50px;
+    font-weight: 300;
+    color: #5C5E81;
+    font-size: 30px;
+    height: auto !important; height: 100%;
 }

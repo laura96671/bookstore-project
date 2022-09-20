@@ -1,34 +1,53 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load text_trim %}
+
 
 {% block content %}
-  <nav aria-label="breadcrumb">
+<div id="favourite-books-section">
+    <nav aria-label="breadcrumb" id="breadcrumb-bar">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
     </ol>
-  </nav>
+    </nav>
 
-<h2>What to read next...</h2>
+    <h2 id="what-to-read-next">WHAT TO READ NEXT ...</h2>
 
-  {% if favourite_item %}
+    <div class="product_favs">
+    {% if favourite_item %}
     {% for item in favourite_item %}
-        <div class="product_list_view" style="display: inline-block; margin-top:50px">
-            <div class="col-3 col-3 col-3 col-3">
-                <div class="image-list card">
-                    {% if item.products.book_image %}
-                        <img id="image-to-edit" class="book-main-image card-img-t15'1op" src="{{ item.products.book_image.url }}" alt="view more">
-                    {% endif %}
-                    <div class="card-body">
-                        <h6 class="card-title">{{ item.products }}</h6>
-                        <p class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ item.products.author }}</p>
-                        <h6 class="p-2 text-dark" style="margin-top:-23px; margin-left:-7px">$ {{ item.products.price }}</h6>
-                        <a href="{% url 'delete_fav' item.id %}">Delete</a>
-                        <a class="btn btn-dark btn-sm" type="button" style="margin-top:-18px;" href="{{ item.products.get_absolute_url }}">View</a>
+            <div class="product_list_view card mb-3" id="product_favs_list">
+                <div class="row no-gutters">
+                    <div class="col-md-3" style="max-width: 300px;">
+                        <a href="{{ item.products.get_absolute_url }}"><img src="{{ item.products.book_image.url }}"  class="card-img" alt="..."></a>
+                    </div>
+                    <div class="col" style="max-width: 700px">
+                        <div class="favs-item card-body">
+                            <h6 class="card-title" style="color: #000505">{{ item.products }}</h6>
+                            <p class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ item.products.author }}</p>
+                            <h6 id="desc-title">Synopsis</h6>
+                            <div class="container" id="ellipsis-container">
+                                <p id="description-text_{{ item.id }}" class="description-text" onclick="viewMore({{ item.id }}, true)">{{ item.products.description | text_trim }}</p>
+                                <p id="description-all_{{ item.id }}" style="display:none" onclick="viewMore({{ item.id }}, false)">{{ item.products.description }}</p>
+                            </div>
+                            <a href="{{ item.products.get_absolute_url }}">
+                                <button id="view-more-button" class="btn btn-dark btn-sm">View More</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <div id="favs-card" class="card-footer text-right">
+                    <a class="btn btn-dark btn-sm" type="button" style="margin-top:-18px; background-color: #000505" href="">Buy</a>
+                    <a href="{% url 'delete_fav' item.id %}">
+                        <span title="Remove from wishlist">
+                            <ion-icon style="pointer-events: none" id="remove-favs-heart" size="small" name="heart-dislike-outline"></ion-icon>
+                        </span>
+                    </a>
+                </div>
             </div>
-        </div>
     {% endfor %}
-  {% endif %}
+    {% endif %}
+    </div>
+</div>
 {% endblock content %}

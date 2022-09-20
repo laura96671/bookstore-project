@@ -1,57 +1,56 @@
-{% extends '_base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% load socialaccount %}
 {% providers_media_js %}
 
-{% block title %}Log in{% endblock title %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Log in{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block content %}
-<h1>Log in</h1>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '5061613290619243',
-      xfbml      : true,
-      version    : 'v14.0'
-    });
-    FB.AppEvents.logPageView();
+    <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/login.css' %}">
 
-    FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-    });
-  };
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body>
+    {% block content %}
+    <div id="login-form" class="log-in-form card">
+        <div class="card-title">
+            <a href="{% url 'home' %}"><img id="login-logo" src="{% static 'logo/logo.png' %}"/></a>
+            <h1>LOG IN</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
 
+                <button id="login-submit-button" class="btn btn-dark" type="submit">Sign in</button>
+            </form>
 
+            <a class="p text-dark forgotten_password" href="{% url 'account_reset_password' %}">
+                <small>Forgotten password</small></a>
 
-   function checkLoginState() {
-   console.log("Hello bubu");
-    FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-</script>
+            <div id="signup-section">
+                <p><a href="{% url 'account_signup' %}" style="color: #5D5D81"><span>Sign up with email</span></a><br/>or<br/>
+                    Log in with one of the following:<br/>
+                    <a style="color: inherit" href="{% provider_login_url 'github' %}">
+                        <ion-icon size="large" name="logo-github"></ion-icon>
+                    </a>
+                    <a style="color: inherit" href="{% provider_login_url 'google' process='connect' %}">
+                        <ion-icon size="large" name="logo-google"></ion-icon>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
 
-<div id="fb-root"></div>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button class="btn btn-dark" type="submit">Sign in</button>
-    <fb:login-button
-    scope="public_profile,email"
-    onlogin="checkLoginState();">
-    </fb:login-button>
-</form>
-
-<a class="p-2 text-dark forgotten_password" href="{% url 'account_reset_password' %}">
-    <p>Forgotten password</p></a>
-
-{% endblock content %}
+    {% endblock content %}
+</body>

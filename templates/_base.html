@@ -9,9 +9,13 @@
 
     <link rel="stylesheet" type="text/css" href="{% static '/css/base.css' %}">
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="{% static 'js/home.js' %}" defer></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
@@ -20,34 +24,42 @@
         <!-- Fixed navbar -->
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4
         mb-3 bg-white border-bottom shadow-sm">
-            <a href="{% url 'home' %}" class="navbar-brand my-0 mr-md-auto font-weight-normal">Bookstore</a>
-            <nav class="my-2 my-md-0 mr-md-3 navbar navbar-expand-lg">
+            <nav id="store-navbar" class="navbar navbar-expand-lg">
+                <a href="{% url 'home' %}" class="navbar-brand">
+                   <img id="app-logo" src="{% static 'logo/logo.png' %}"/>
+                </a>
                 <div class="container-fluid">
-                    <a class="p-2 text-dark" href="{% url 'about' %}">About us</a>
-                    {% if request.user.is_superuser %}
-                        <div class="dropdown">
-                            <a class="p-2 text-dark dropdown-toggle" type="button" data-toggle="dropdown" href="{% url 'product_list' %}">Shop
-                            <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="p-2 text-dark" href="{% url 'new_product_form' %}">Add new product</a></li>
-                            </ul>
-                        </div>
-                    {% else %}
-                       <a class="p-2 text-dark" href="{% url 'product_list' %}">Shop</a>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-                        <!--<a href="{% url 'cart' %}">Cart</a> -->
-                        <a id="wishlist-button" href="{% url 'wishlist' %}">My Wishlist</a>
-                        <a class="btn btn-outline-dark btn-sm" href="{% url 'account_logout' %}" role="button">Log out</a>
-                    {% else %}
-                        <a class="btn btn-outline-dark btn-sm" href="{% url 'account_login' %}" role="button">Log In</a>
-                        <a class="btn btn-outline-dark btn-sm" href="{% url 'account_signup' %}" role="button">Sign Up</a>
-                    {% endif %}
+                    <ul id="menu-list">
+                        <li><a class="p-2 text-dark" href="{% url 'about' %}">About us</a></li>
+                        {% if request.user.is_superuser %}
+                            <li><div class="dropdown">
+                                <a class="p-2 text-dark dropdown-toggle" type="button" data-toggle="dropdown" href="{% url 'product_list' %}">Shop
+                                <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="p-2 text-dark" href="{% url 'new_product_form' %}">Add new product</a></li>
+                                </ul>
+                            </div></li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <!--<a href="{% url 'cart' %}">Cart</a> -->
+                            <li><div class="dropdown">
+                                <a class="p-2 text-dark dropdown-toggle" type="button" data-toggle="dropdown" href="{% url 'personal_area' %}">My Area
+                                <span class="caret"></span></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="p-2 text-dark" href="{% url 'wishlist' %}">My Wishlist</a><br>
+                                    <a class="p-2 text-dark" href="{% url 'personal_area' %}">My Area</a>
+                                </div>
+                            </div></li>
+                            <li><a class="btn btn-outline-dark btn-sm" href="{% url 'account_logout' %}" role="button">Log out</a></li>
+                        {% else %}
+                            <li><a class="btn btn-outline-dark btn-sm" href="{% url 'account_login' %}" role="button">Log In</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </nav>
         </div>
     </header>
-    <div class="container page-content">
+    <div class="container page-content" id="page-app">
 
         {% block content %}
         {% endblock content %}
@@ -57,10 +69,8 @@
         {% endblock scripts %}
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <div class="card-footer text-muted" id="sticky-footer">
-        <div class="container">
-            <h6>Bookstore</h6>
-            <p>Copyright © 2022 <b>Bookstore</b>. All Rights Reserved.</p>
-        </div>
+      <h6>Bookstore</h6>
+        <p>Copyright © 2022 <b>Bookstore</b>. All Rights Reserved.</p>
     </div>
 </body>
 </html>

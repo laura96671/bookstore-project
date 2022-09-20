@@ -1,0 +1,49 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#signup-form {
+    margin: auto;
+    width: 600px;
+    padding: 10px;
+    box-shadow: 0 0 10px 10px #f5f5f5;
+    border-radius: 30px;
+}
+
+#signup-form h1 {
+    font-size: 30px;
+    display: flex;
+    float: right;
+    font-weight: 300;
+    padding: 10px;
+    color: #5D5D81;
+    margin-bottom: -20px;
+    margin-right: 20px;
+}
+
+#signup-submit-button {
+    width: 100%;
+    background-color: #3B3355;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+
+#signup-logo {
+    display: block;
+    float: left;
+    width: 30%;
+    margin-bottom: -40px;
+    margin-top: -30px;
+    margin-left: -25px
+}
