@@ -47,6 +47,6 @@ Bookstore project made with Django, HTML and CSS. Class-based and functional vie
 <br/>
 <br/>
 
-## Demo
+## Demo - Version 1.0
 https://user-images.githubusercontent.com/106548240/192109416-c9e63f8a-661c-47fd-b067-82946b5d532b.mp4
 
