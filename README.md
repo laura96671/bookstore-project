@@ -1,4 +1,4 @@
-# Bookstore - Version 1.0
+# Bookstore - v 1.0
 ![image](https://user-images.githubusercontent.com/106548240/192108743-f6edd6f2-357f-490b-aa59-93dbdd99082d.png)
 
 <br/>
