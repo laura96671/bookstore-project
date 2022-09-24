@@ -1,9 +1,10 @@
+# Bookstore - Version 1.0
 ![image](https://user-images.githubusercontent.com/106548240/192108743-f6edd6f2-357f-490b-aa59-93dbdd99082d.png)
 
 <br/>
 <br/>
 
-# The Idea 
+## The Idea 
 What should I read next? The bookstore web app allows users to go through a questionnaire that once completed, displays a list of suggested books based on the results of the questionnaire itself. Each item can be added to the "What to read next" list on the personal area and bought through an Amazon referral link.
 <br/>
 <br/>
@@ -46,6 +47,6 @@ Bookstore project made with Django, HTML and CSS. Class-based and functional vie
 <br/>
 <br/>
 
-## Demo - Version 1.0
+## Demo
 https://user-images.githubusercontent.com/106548240/192109416-c9e63f8a-661c-47fd-b067-82946b5d532b.mp4
 
