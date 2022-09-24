@@ -1,17 +1,43 @@
 ![image](https://user-images.githubusercontent.com/106548240/192108743-f6edd6f2-357f-490b-aa59-93dbdd99082d.png)
+
 <br/>
 <br/>
+
 # The Idea 
 Born from the idea to have a suggestion on which book to read next, the bookstore web app allows users to go through a questionnaire that once completed,
 will display a list of suggested books based on the results of the questionnaire itself. Each item can be added to the "What to read next" list on the personal area and bought through an Amazon referral link.
+<br/>
+<br/>
 
 ## About The Project
+Bookstore project made with Django, HTML and CSS. Class-based and functional views have been used throughout the project to handle main logics (book lists, products creation, registration/login form, products filtering), as well as Javascript for UI and PostgreSQL for database. The web app is Dockerized.
+<br/>
+<br/>
 
+## Features
+### Admin side:
+<li>Add new books
+<li>Edit details of the existing books
+<li>Delete existing books
+<li>View user's wishlist
+<li>View the order details.
+
+### User side:
+<li>Select filters to show suggested books
+<li>Registration and authentication
+<li>Add and remove products from personal wishlist
+<li>Buy product through affiliate Amazon link
+<li>Update profile details
+<br/>
+<br/>
 
 ## ER Diagram
 ![bookstore_er_diagram](https://user-images.githubusercontent.com/106548240/192107686-dee46cec-6f55-4e03-a6fa-3edbb88746c8.png)
 
-## Technologies Used
+<br/>
+<br/>
+
+## Technology Stack
 <li>Django
 <li>Python
 <li>JavaScript
