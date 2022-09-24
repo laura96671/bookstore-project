@@ -10,7 +10,7 @@ What should I read next? The bookstore web app allows users to go through a ques
 <br/>
 
 ## About The Project
-Bookstore project made with Django, HTML and CSS. Class-based and functional views have been used throughout the project to handle main logics (book lists, products creation, registration/login form, products filtering), as well as Javascript for UI and PostgreSQL for database. The web app is Dockerized.
+Project built with Django, HTML and CSS. Class-based and functional views have been used throughout the project to handle main logics (book lists, products creation, registration/login form, products filtering), as well as Javascript for UI and PostgreSQL for database. The web app is Dockerized.
 <br/>
 <br/>
 
