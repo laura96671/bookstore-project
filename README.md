@@ -4,7 +4,7 @@
 <br/>
 
 # The Idea 
-What should I read next? The bookstore web app allows users to go through a questionnaire that once completed, will display a list of suggested books based on the results of the questionnaire itself. Each item can be added to the "What to read next" list on the personal area and bought through an Amazon referral link.
+What should I read next? The bookstore web app allows users to go through a questionnaire that once completed, displays a list of suggested books based on the results of the questionnaire itself. Each item can be added to the "What to read next" list on the personal area and bought through an Amazon referral link.
 <br/>
 <br/>
 
