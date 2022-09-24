@@ -1,5 +1,5 @@
 # Bookstore - v 1.0
-https://user-images.githubusercontent.com/106548240/192109416-c9e63f8a-661c-47fd-b067-82946b5d532b.mp4
+<img width="1356" alt="Screenshot 2022-09-24 at 20 43 10" src="https://user-images.githubusercontent.com/106548240/192113810-410c185b-9961-410d-b63c-e35b14e83765.png">
 
 <br/>
 
@@ -46,3 +46,5 @@ Project built with Django, HTML and CSS. Class-based and functional views have b
 <br/>
 <br/>
 
+## Demo
+https://user-images.githubusercontent.com/106548240/192109416-c9e63f8a-661c-47fd-b067-82946b5d532b.mp4
