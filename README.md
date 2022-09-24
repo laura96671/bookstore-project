@@ -1,5 +1,5 @@
 # Bookstore - v 1.0
-![image](https://user-images.githubusercontent.com/106548240/192108743-f6edd6f2-357f-490b-aa59-93dbdd99082d.png)
+https://user-images.githubusercontent.com/106548240/192109416-c9e63f8a-661c-47fd-b067-82946b5d532b.mp4
 
 <br/>
 
@@ -45,7 +45,4 @@ Project built with Django, HTML and CSS. Class-based and functional views have b
 <li>Docker
 <br/>
 <br/>
-
-## Demo
-https://user-images.githubusercontent.com/106548240/192109416-c9e63f8a-661c-47fd-b067-82946b5d532b.mp4
 
