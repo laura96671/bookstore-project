@@ -23,7 +23,7 @@ Bookstore project made with Django, HTML and CSS. Class-based and functional vie
 
 ### User side:
 <li>Select filters to show suggested books
-<li>Registration and authentication
+<li>Email/social registration and authentication
 <li>Add and remove products from personal wishlist
 <li>Buy product through Amazon referral link
 <li>Update profile details
