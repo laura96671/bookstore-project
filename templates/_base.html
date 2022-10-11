@@ -47,10 +47,18 @@
                                 <span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="p-2 text-dark" href="{% url 'wishlist' %}">My Wishlist</a><br>
-                                    <a class="p-2 text-dark" href="{% url 'personal_area' %}">My Area</a>
+                                    <a class="p-2 text-dark" href="{% url 'personal_area' %}">My Area</a><br>
+                                    <a class="p-2 text-dark" href="{% url 'account_logout' %}">Log out</a>
                                 </div>
                             </div></li>
-                            <li><a class="btn btn-outline-dark btn-sm" href="{% url 'account_logout' %}" role="button">Log out</a></li>
+                            <li>
+                                <a id="wishlist-area" href="{% url 'wishlist' %}">
+                                    <span title="My Wishlist">
+                                        <ion-icon size="large" name="heart-circle-outline"></ion-icon>
+                                        <p id="wishlist-icon-num">{{ user_favs.count }}</p>
+                                    </span>
+                                </a>
+                            </li>
                         {% else %}
                             <li><a class="btn btn-outline-dark btn-sm" href="{% url 'account_login' %}" role="button">Log In</a></li>
                         {% endif %}
@@ -68,7 +76,7 @@
         {% block scripts %}
         {% endblock scripts %}
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <div class="card-footer text-muted" id="sticky-footer">
+    <div class="card-footer mt-auto text-muted" id="sticky-footer">
       <h6>Bookstore</h6>
         <p>Copyright © 2022 <b>Bookstore</b>. All Rights Reserved.</p>
     </div>

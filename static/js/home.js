@@ -37,7 +37,22 @@ function submitForm(){
     $("#submit-button").hide();
     $("#book-animation-search").show();
     setTimeout(function(){
-      $("#filter-form").submit();
+      $("#filter-form").submit()(function () {
+          var formData = $("#filter-form").serialize();
+          $.ajax({
+              url: "/home/",
+              type: 'POST',
+              data: formData,
+              dataType: "json",
+              success: function (response) {
+                  alert("done!");
+              },
+              error: function (response) {
+                    // alert the error if any error occured
+                    alert("error");
+              }
+          });
+      });
     } ,3000)
 }
 

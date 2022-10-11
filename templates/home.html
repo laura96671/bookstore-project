@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load to_str %}
 
 {% block title %}Bookstore Home{% endblock title %}
 
@@ -12,7 +13,7 @@
                     <source src="{% static 'videos/books_animation.mp4' type='video/mp4' %}">
                 </video>
             </div>
-            <form id="filter-form" method="POST">
+            <form id="filter-form" method="POST" data-ajax-target="{% url 'home' %}">
                 <small id="required">* All fields are required</small>
                 {% csrf_token %}
                 <section class="filter1" id="genre-check">
@@ -75,33 +76,33 @@
     </div>
     <div id="filter-book-results">
         {% if book_showed %}
-        <div id="#filter-book-results">
-            <h2>Suggested Books ...</h2>
-            {% for product in book_showed %}
-            <a href="{{ product.get_absolute_url }}">
-                <div id="product_list_view">
-                    <div class="image-list card">
-                        {% if product.book_image %}
-                            <img id="image-to-edit" class="book-main-image card-img-t15'1op" src="{{ product.book_image.url }}" alt="view more">
-                        {% endif %}
-                        <div class="card-body">
-                            <h6 id="book-title" class="card-title">{{ product.title }}</h6>
-                            <p id="book-subtitle" class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ product.author }}</p>
-                            <a id="buy-button" class="btn btn-dark btn-sm mt-auto"  href="{{ product.get_add_to_cart_url }}">Buy</a>
-                                <a id="wishlist-button" href="{{ product.get_add_to_favs_url }}">
-                                    <span title="Add to wishlist">
-                                        <ion-icon style="pointer-events: none" name="heart-outline"></ion-icon>
-                                    </span>
-                                </a>
+            <div id="#filter-book-results">
+                <h2>Suggested Books ...</h2>
+                {% for product in book_showed %}
+                    <a href="{{ product.get_absolute_url }}">
+                        <div id="product_list_view">
+                            <div class="image-list card">
+                                {% if product.book_image %}
+                                    <img id="image-to-edit" class="book-main-image card-img-t15'1op" src="{{ product.book_image.url }}" alt="view more">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h6 id="book-title" class="card-title">{{ product.title }}</h6>
+                                    <p id="book-subtitle" class="p-2 text-dark" style="margin-left:-7px; margin-top:-20px; font-size:14px">by {{ product.author }}</p>
+                                    <a id="buy-button" class="btn btn-dark btn-sm mt-auto"  href="{{ product.get_add_to_cart_url }}">Buy</a>
+                                        <a id="wishlist-button" href="{{ product.get_add_to_favs_url }}">
+                                            <span title="Add to wishlist">
+                                                <ion-icon style="pointer-events: none" name="heart-outline"></ion-icon>
+                                            </span>
+                                        </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
+                    </a>
+                {% endfor %}
+            </div>
         {% else %}
             <div id="no_books_retrieved">
-                <p>No books found based on your search</p>
+                <p style="display: none">No books found based on your search</p>
             </div>
         {% endif %}
     </div>

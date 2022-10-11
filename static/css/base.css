@@ -1,6 +1,11 @@
-body {
+html, body {
     background: url('../background/background_image.png');
     font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+
+ion-icon {
+    pointer-events: none
 }
 
 #page-app {
@@ -25,13 +30,11 @@ body {
     style= margin-top:-10px;
 }
 
-#footer-container {
-}
-
 #sticky-footer {
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
+  overflow: hidden;
   width: 100%;
   background-color: #EBEFF4;
   text-align: center;
@@ -54,7 +57,10 @@ body {
     display: inline-flex;
     vertical-align:bottom;
     margin-top:30px;
+    transition: transform .2s;
 }
+
+#product_list_view:hover { transform: scale(1.1); }
 
 #book-title { color: #000505 }
 #book-subtitle { color: #5D5D81 }
@@ -191,6 +197,35 @@ body {
 #menu-list li {
     display: table-cell;
     vertical-align: middle;
+}
+
+#wishlist-area {
+    all: unset;
+    cursor: pointer;
+}
+
+#wishlist-area:hover {
+    color: #5D5D81
+}
+
+#wishlist-area ion-icon {
+    position:absolute
+}
+
+#wishlist-area p {
+    position:relative;
+    font-size: 13px;
+    margin-left: 15px;
+    margin-top: 15px;
+    color: #FEFCFD
+}
+
+#wishlist-icon-num {
+    text-align:center;
+    background-color:#5D5D81;
+    border-radius:50%;
+    width: 20px;
+    height: 20px;
 }
 
 /* Favourite Books Area */
